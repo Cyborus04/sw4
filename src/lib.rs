@@ -292,14 +292,14 @@ impl FrameBuffer {
         unsafe { raw_api::line(x1, y1, x2, y2) }
     }
 
-    /// Draw a horizontal onto the screen
+    /// Draw a horizontal line onto the screen
     /// 
     /// Draw color 1 is used for the line color
     pub fn hline(&mut self, x: i32, y: i32, len: u32) {
         unsafe { raw_api::hline(x, y, len) }
     }
 
-    /// Draw a vertical onto the screen
+    /// Draw a vertical line onto the screen
     /// 
     /// Draw color 1 is used for the line's color
     pub fn vline(&mut self, x: i32, y: i32, len: u32) {
