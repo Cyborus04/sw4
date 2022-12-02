@@ -25,4 +25,7 @@ extern "C" {
     
     #[link_name = "traceUtf8"]
     pub fn trace_utf8(ptr: *const u8, len: usize);
+
+    pub fn diskr(ptr: *mut u8, len: usize);
+    pub fn diskw(ptr: *const u8, len: usize);
 }
