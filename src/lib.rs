@@ -39,6 +39,7 @@ pub struct Wasm4 {
     reserved: [u8; 127],
     pub frame_buffer: FrameBuffer,
     pub sounds: SoundSystem,
+    pub disk: Disk,
 }
 
 /// The game's color palette
@@ -425,6 +426,18 @@ pub enum DutyCycle {
     Quarter = 1,
     Half = 2,
     ThreeQuarters = 3,
+}
+
+pub struct Disk(());
+
+impl Disk {
+    pub fn read(&self, buf: &mut [u8]) {
+        unsafe { raw_api::diskr(buf.as_mut_ptr(), buf.len()) }
+    }
+    
+    pub fn write(&self, buf: &[u8]) {
+        unsafe { raw_api::diskw(buf.as_ptr(), buf.len()) }
+    }
 }
 
 pub fn trace(s: &str) {
